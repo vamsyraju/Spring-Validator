@@ -1,0 +1,16 @@
+*.prefs
+*.classpath
+.metadata/*
+target/*
+*.log
+.metadata/.mylyn/repositories.xml.zip
+*.index
+.metadata/.plugins/org.eclipse.core.resources/.projects/RemoteSystemsTempFiles/.markers.snap
+*.snap
+.metadata/.plugins/org.eclipse.core.resources/.projects/RemoteSystemsTempFiles/org.eclipse.egit.core/GitProjectData.properties
+*.resources
+*.project
+.metadata/version.ini
+*.running
+*.cfs
+.metadata/.plugins/org.eclipse.m2e.core/nexus/830bc118332e77292949ed1e6d2fabe0/write.lock
