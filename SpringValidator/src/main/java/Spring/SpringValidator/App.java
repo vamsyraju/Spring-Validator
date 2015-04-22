@@ -1,5 +1,10 @@
 package Spring.SpringValidator;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.tutorialpoint.spring.di.TextEditor;
+
 /**
  * Hello world!
  *
@@ -8,6 +13,11 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World First prasog change!" );
+    	 ApplicationContext context = 
+                 new ClassPathXmlApplicationContext("Context.xml");
+    	 System.out.println("**********************");	
+          TextEditor te = (TextEditor) context.getBean("textEditor");
+
+          te.spellCheck();
     }
 }
