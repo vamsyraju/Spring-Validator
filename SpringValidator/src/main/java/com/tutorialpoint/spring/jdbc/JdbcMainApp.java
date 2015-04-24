@@ -34,6 +34,11 @@ public class JdbcMainApp {
 	      System.out.print("ID : " + student.getId() );
 	      System.out.print(", Name : " + student.getName() );
 	      System.out.println(", Age : " + student.getAge());
-		  
+	      
+	      System.out.println("----From Stored Procedure-----" );
+	      Student studentfromSp = studentJDBCTemplate.getStudentFromStoredProcedure(2);
+	      System.out.print("ID : " + studentfromSp.getId() );
+	      System.out.print(", Name : " + studentfromSp.getName() );
+	      System.out.println(", Age : " + studentfromSp.getAge());
 	   }
 }
