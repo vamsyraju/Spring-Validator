@@ -8,7 +8,7 @@ public class MainAspect {
 	      ApplicationContext context = 
 	             new ClassPathXmlApplicationContext("Aspect.xml");
 
-	      Student student = (Student) context.getBean("student");
+	      AspectStudent student = (AspectStudent) context.getBean("student");
 
 	      student.getName();
 	      student.getAge();
