@@ -1,7 +1,7 @@
 package com.tutorialpoint.spring.aspect;
 
-public class Student {
-	private Integer age;
+public class AspectStudent {
+	 private Integer age;
 	   private String name;
 
 	   public void setAge(Integer age) {
@@ -20,7 +20,7 @@ public class Student {
 	      return name;
 	   }
 	   public void printThrowException(){
-		   System.out.println("Exception raised");
-	       throw new IllegalArgumentException();
+	      System.out.println("Exception raised");
+	      throw new IllegalArgumentException();
 	   }
 }
