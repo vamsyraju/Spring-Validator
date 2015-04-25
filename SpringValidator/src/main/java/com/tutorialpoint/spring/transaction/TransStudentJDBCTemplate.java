@@ -2,6 +2,7 @@ package com.tutorialpoint.spring.transaction;
 
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
 import javax.sql.DataSource;
 
 import org.springframework.dao.DataAccessException;
@@ -15,7 +16,6 @@ public class TransStudentJDBCTemplate implements TransStudentDao{
 	
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplateObject;
-	private PlatformTransactionManager transactionManager;
 
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource=dataSource;
@@ -23,13 +23,8 @@ public class TransStudentJDBCTemplate implements TransStudentDao{
 		
 	}
 	
-	public void setTransactionManager(PlatformTransactionManager transactionManager){
-		this.transactionManager=transactionManager;
-	}
 
 	public void create(String name, Integer age, Integer marks, Integer year) {
-		TransactionDefinition definition=new DefaultTransactionDefinition();
-		TransactionStatus status=transactionManager.getTransaction(definition);
 		try{
 			 String SQL1 = "insert into Student (name, age) values (?, ?)";
 	         jdbcTemplateObject.update( SQL1, name, age);
@@ -41,15 +36,16 @@ public class TransStudentJDBCTemplate implements TransStudentDao{
 	         String SQL3 = "insert into Marks(sid, marks, year) " + 
 	                       "values (?, ?, ?)";
 	         jdbcTemplateObject.update( SQL3, sid, marks, year);
-
 	         System.out.println("Created Name = " + name + ", Age = " + age);
-	         transactionManager.commit(status);
+	         //throw new RuntimeException();
 		}catch(DataAccessException e){
 			 System.out.println("Error in creating record, rolling back");
-	         transactionManager.rollback(status);
+	         throw e;
+		}catch (RuntimeException e) {
+			 System.out.println("DECLARATIVE TRANSACTION MANAGEMENT WORKED");
 	         throw e;
 		}
-		return;
+		//return;
 	}
 
 	public List<TransStudentMarks> listStudents() {

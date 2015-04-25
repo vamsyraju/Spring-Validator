@@ -10,8 +10,8 @@ public class TransMainApp {
 	      ApplicationContext context = 
 	             new ClassPathXmlApplicationContext("Trans.xml");
 
-	      TransStudentJDBCTemplate studentJDBCTemplate = 
-	      (TransStudentJDBCTemplate)context.getBean("transStudentJDBCTemplate");
+	      TransStudentDao studentJDBCTemplate = 
+	      (TransStudentDao)context.getBean("transStudentJDBCTemplate");
 	      
 	      System.out.println("------Records creation--------" );
 	      studentJDBCTemplate.create("Zara", 11, 99, 2010);
